@@ -72,3 +72,17 @@ class TestTennis:
 		self.tennis.score_point(0)
 		
 		assert self.tennis.winner == 0
+		
+	def test_example_game(self):
+		self.tennis.score_point(0)
+		self.tennis.score_point(0)
+		self.tennis.score_point(0)
+		self.tennis.score_point(1)
+		self.tennis.score_point(1)
+		self.tennis.score_point(1)
+		self.tennis.score_point(0)
+		self.tennis.score_point(1)
+		self.tennis.score_point(0)
+		assert self.tennis.winner == -1
+		self.tennis.score_point(0)
+		assert self.tennis.winner == 0
