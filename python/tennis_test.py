@@ -17,4 +17,23 @@ class TestTennis:
 		
 	def test_player_can_score_from_0_to_15_points(self):
 		self.tennis.score_point(0)
-		assert self.tennis.score(0) == 15
+		assert self.tennis.current_score(0) == 15
+		
+	def test_player_can_win_after_scoring_4_times(self):
+		self.tennis.score_point(0)
+		self.tennis.score_point(0)
+		self.tennis.score_point(0)
+		self.tennis.score_point(0)						
+			
+		assert self.tennis.winner == 0
+	
+	def test_player_cannot_win_when_tied_at_40(self):
+		self.tennis.score_point(0)
+		self.tennis.score_point(0)
+		self.tennis.score_point(0)
+		self.tennis.score_point(1)
+		self.tennis.score_point(1)
+		self.tennis.score_point(1)
+		self.tennis.score_point(0)
+		
+		assert self.tennis.winner == -1
