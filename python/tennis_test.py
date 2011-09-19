@@ -37,3 +37,38 @@ class TestTennis:
 		self.tennis.score_point(0)
 		
 		assert self.tennis.winner == -1
+		
+	def test_player_can_gain_advantage_when_scoring_at_tied_40(self):
+		self.tennis.score_point(0)
+		self.tennis.score_point(0)
+		self.tennis.score_point(0)
+		self.tennis.score_point(1)
+		self.tennis.score_point(1)
+		self.tennis.score_point(1)
+		self.tennis.score_point(0)
+		
+		assert self.tennis.advantage == 0
+		
+	def test_player_can_lose_advantage_when_opponent_scores(self):
+		self.tennis.score_point(0)
+		self.tennis.score_point(0)
+		self.tennis.score_point(0)
+		self.tennis.score_point(1)
+		self.tennis.score_point(1)
+		self.tennis.score_point(1)
+		self.tennis.score_point(0)
+		self.tennis.score_point(1)
+		
+		assert self.tennis.advantage == -1
+		
+	def test_player_can_win_with_advantage(self):
+		self.tennis.score_point(0)
+		self.tennis.score_point(0)
+		self.tennis.score_point(0)
+		self.tennis.score_point(1)
+		self.tennis.score_point(1)
+		self.tennis.score_point(1)
+		self.tennis.score_point(0)
+		self.tennis.score_point(0)
+		
+		assert self.tennis.winner == 0
